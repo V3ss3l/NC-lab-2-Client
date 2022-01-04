@@ -1,4 +1,4 @@
-package model;
+package util;
 
 public final class Values {
     public static final String TRACK_FILE = "tracks.txt";

@@ -1,11 +1,8 @@
 package util;
 
-import model.music.Entity;
-import model.music.MusicGenres;
-import model.music.MusicTrack;
 import org.json.simple.*;
 import org.json.simple.parser.ParseException;
-import static model.Values.*;
+import static util.Values.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -38,40 +35,6 @@ public abstract class JsonHelper {
         return obj;
     }
 
-    public static ArrayList<Entity> getArrayFromJson(JSONObject obj) throws IOException, ClassNotFoundException {
-        ArrayList<Entity> arr = new ArrayList<>();
-        String command = (String) obj.get(COMMAND);
-        String entity = (String) obj.get(ENTITY);
-        MusicGenres genre;
-        MusicTrack track = new MusicTrack();
-        String sub = GENRE;
-        JSONArray jsArr;
-        JSONObject buff;
-        if (entity.contains(sub)) {
-            jsArr = (JSONArray) obj.get(ARRAY);
-            for (int i = 0; i < jsArr.size(); i++) {
-                buff = (JSONObject) jsArr.get(i);
-                String nameOfGenre = (String) buff.get(NAME_OF_GENRE);
-                genre = new MusicGenres(nameOfGenre);
-                arr.add(genre);
-            }
-            return arr;
-        }
-        jsArr = (JSONArray) obj.get(ARRAY);
-        for (int i = 0; i < jsArr.size(); i++) {
-            buff = (JSONObject) jsArr.get(i);
-            String nameOfTrack = (String) buff.get(NAME_OF_TRACK);
-            String nameOfPerformer = (String) buff.get(NAME_OF_PERFORMER);
-            String nameOfAlbum = (String) buff.get(NAME_OF_ALBUM);
-            String nameOfGenre = (String) buff.get(NAME_OF_GENRE);
-            if (track.createTrack(nameOfGenre)) {
-                track = new MusicTrack(nameOfTrack, nameOfPerformer, nameOfAlbum, nameOfGenre);
-                arr.add(track);
-            }
-        }
-        return arr;
-    }
-
     public static JSONObject watchEntity(String[] str) {
         JSONObject obj = new JSONObject();
         obj.put(COMMAND, WATCH);
@@ -96,20 +59,6 @@ public abstract class JsonHelper {
         return obj;
     }
 
-    public static ArrayList<String> parseJsonToSearchArr(JSONObject js) {
-        ArrayList<String> keys = new ArrayList<>();
-        String entity = (String) js.get(ENTITY);
-        if (entity.contains(TRACK)) {
-            keys.add((String) js.get(NAME_OF_TRACK));
-            keys.add((String) js.get(NAME_OF_PERFORMER));
-            keys.add((String) js.get(NAME_OF_ALBUM));
-            keys.add((String) js.get(NAME_OF_GENRE));
-        } else {
-            keys.add((String) js.get(NAME_OF_GENRE));
-        }
-        return keys;
-    }
-
     // джейсон для удаления
     public static JSONObject deleteEntityJson(String[] str) {
         JSONObject obj = new JSONObject();
@@ -121,18 +70,6 @@ public abstract class JsonHelper {
             obj.put(NAME_OF_PERFORMER, str[3]);
         } else obj.put(NAME_OF_GENRE, str[2]);
         return obj;
-    }
-
-    public static ArrayList<String> parseJsonToDeleteArr(JSONObject js) {
-        ArrayList<String> keys = new ArrayList<>();
-        String entity = (String) js.get(ENTITY);
-        if (entity.contains(TRACK)) {
-            keys.add((String) js.get(NAME_OF_TRACK));
-            keys.add((String) js.get(NAME_OF_PERFORMER));
-        } else {
-            keys.add((String) js.get(NAME_OF_GENRE));
-        }
-        return keys;
     }
 
     public static JSONObject setEntityJson(String[] str) {
@@ -155,23 +92,6 @@ public abstract class JsonHelper {
         return obj;
     }
 
-    public static ArrayList<String> parseJsonToSetArr(JSONObject js) {
-        ArrayList<String> keys = new ArrayList<>();
-        String entity = (String) js.get(ENTITY);
-        if (entity.contains(TRACK)) {
-            keys.add((String) js.get(NAME_FOR_SEARCH));
-            keys.add((String) js.get(PERFORMER_FOR_SEARCH));
-            keys.add((String) js.get(NAME_OF_TRACK));
-            keys.add((String) js.get(NAME_OF_PERFORMER));
-            keys.add((String) js.get(NAME_OF_ALBUM));
-            keys.add((String) js.get(NAME_OF_GENRE));
-        } else {
-            keys.add((String) js.get(GENRE_FOR_SEARCH));
-            keys.add((String) js.get(NAME_OF_GENRE));
-        }
-        return keys;
-    }
-
     public static JSONObject modelView(ArrayList list) {
         JSONObject obj = new JSONObject();
         JSONObject temp;
@@ -187,13 +107,13 @@ public abstract class JsonHelper {
 
     public static ArrayList viewModel(JSONObject obj) throws IOException, ParseException {
         ArrayList arr = new ArrayList<>();
-        Entity entity;
+        Object entity;
         JSONArray jsArr;
         JSONObject buff;
         jsArr = (JSONArray) obj.get(ARRAY);
         for (int i = 0; i < jsArr.size(); i++) {
             buff = (JSONObject) jsArr.get(i);
-            entity = (Entity) buff.get(ENTITY);
+            entity = buff.get(ENTITY);
             arr.add(entity);
         }
         return arr;

@@ -48,7 +48,7 @@ public class ConsoleView implements View, Serializable {
                 break;
             default:
                 System.out.println("Where is an action?");
-        }
+        }/*
         System.out.println("Operation is complete. Do you want to repeat? yes|no");
         String answer = reader.readLine();
         switch (answer) {
@@ -58,7 +58,7 @@ public class ConsoleView implements View, Serializable {
                 break;
             default:
                 System.out.println("Invalid answer. Output");
-        }
+        }*/
     }
 
     public void stringList(JSONObject object) throws IOException, ParseException {
