@@ -2,7 +2,9 @@ package util;
 
 import org.json.simple.*;
 import org.json.simple.parser.ParseException;
+
 import static util.Values.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -92,19 +94,6 @@ public abstract class JsonHelper {
         return obj;
     }
 
-    public static JSONObject modelView(ArrayList list) {
-        JSONObject obj = new JSONObject();
-        JSONObject temp;
-        JSONArray arr = new JSONArray();
-        for (int i = 0; i < list.size(); i++) {
-            temp = new JSONObject();
-            temp.put(ENTITY, list.get(i));
-            arr.add(temp);
-        }
-        obj.put(ARRAY, arr);
-        return obj;
-    }
-
     public static ArrayList viewModel(JSONObject obj) throws IOException, ParseException {
         ArrayList arr = new ArrayList<>();
         Object entity;
@@ -119,15 +108,9 @@ public abstract class JsonHelper {
         return arr;
     }
 
-    public static JSONObject errorJson(){
-        JSONObject obj = new JSONObject();
-        obj.put(COMMAND, INVALID_ENTITY);
-        return obj;
-    }
-
-    public static String parseErrorJson(JSONObject obj){
-       String str = (String) obj.get(COMMAND);
-       return str;
+    public static String parseErrorJson(JSONObject obj) {
+        String str = (String) obj.get(COMMAND);
+        return str;
     }
 
 }

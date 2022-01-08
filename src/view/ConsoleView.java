@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class ConsoleView implements View, Serializable {
+public class ConsoleView implements View, Serializable, Runnable {
     private Controller controller;
 
     public ConsoleView() {
@@ -20,10 +20,15 @@ public class ConsoleView implements View, Serializable {
         this.controller = controller;
     }
 
-    public void init(BufferedReader reader) throws IOException, ParseException, ClassNotFoundException {
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
+    public void run(){
         System.out.println("Program is running.\n" + "Do you want to continue working or Make " +
                 "an operation with list? |Add, Delete, Set, Search, Watch, Help|");
-        String buff = reader.readLine(); //ожидание ввода команды
+        Scanner sc = new Scanner(System.in);
+        String buff = sc.nextLine(); //ожидание ввода команды
         String[] str = buff.split(" ");
         switch (str[0]) {
             case "Add":
@@ -48,21 +53,11 @@ public class ConsoleView implements View, Serializable {
                 break;
             default:
                 System.out.println("Where is an action?");
-        }/*
-        System.out.println("Operation is complete. Do you want to repeat? yes|no");
-        String answer = reader.readLine();
-        switch (answer) {
-            case "yes":
-                init(reader);
-            case "no":
-                break;
-            default:
-                System.out.println("Invalid answer. Output");
-        }*/
+        }
     }
 
-    public void stringList(JSONObject object) throws IOException, ParseException {
-        System.out.println("Results:\n " + JsonHelper.viewModel(object).toString());
+    public void stringList(JSONObject obj) throws IOException, ParseException {
+        System.out.println("Results:\n " + JsonHelper.viewModel(obj));
     }
 
     public void errorList(JSONObject object) {

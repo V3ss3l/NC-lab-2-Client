@@ -1,14 +1,17 @@
 package view;
 
+import controller.Controller;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public interface View {
+public interface View extends Runnable{
 
-    public void init(BufferedReader reader) throws InterruptedException, IOException, ParseException, ClassNotFoundException;
+    public void run();
+
+    public void setController(Controller controller);
 
     public void stringList(JSONObject object) throws IOException, ParseException;
 
