@@ -94,18 +94,32 @@ public abstract class JsonHelper {
         return obj;
     }
 
-    public static ArrayList viewModel(JSONObject obj) throws IOException, ParseException {
-        ArrayList arr = new ArrayList<>();
-        Object entity;
+    public static ArrayList<StringBuffer> viewModel(JSONObject obj) {
+        ArrayList<StringBuffer> arr = new ArrayList<>();
+        StringBuffer str;
         JSONArray jsArr;
         JSONObject buff;
-        jsArr = (JSONArray) obj.get(ARRAY);
-        for (int i = 0; i < jsArr.size(); i++) {
-            buff = (JSONObject) jsArr.get(i);
-            entity = buff.get(ENTITY);
-            arr.add(entity);
+        String entity;
+        if(obj.get(ENTITY).equals(GENRE)){
+            jsArr = (JSONArray) obj.get(ARRAY);
+            for (int i = 0; i < jsArr.size(); i++) {
+                str = new StringBuffer();
+                buff = (JSONObject) jsArr.get(i);
+                str.append(buff.get(NAME_OF_GENRE));
+                arr.add(str);
+            }
+            return arr;
         }
-        return arr;
+        else {
+            jsArr = (JSONArray) obj.get(ARRAY);
+            for (int i = 0; i < jsArr.size(); i++) {
+                str = new StringBuffer();
+                buff = (JSONObject) jsArr.get(i);
+                str.append(buff.get(NAME_OF_TRACK + "; " + NAME_OF_PERFORMER + "; " + NAME_OF_ALBUM + "; " + NAME_OF_GENRE));
+                arr.add(str);
+            }
+            return arr;
+        }
     }
 
     public static String parseErrorJson(JSONObject obj) {

@@ -50,6 +50,7 @@ public class Controller implements Serializable, Runnable{
                     System.out.println("Operation is complete. Do you want to repeat? yes|no");
                     String answer = sc.nextLine();
                     if (answer.equals("no")) flag = false;
+                    else view.run();
                 }
             } finally {
                 System.out.println("Client was closed...");
