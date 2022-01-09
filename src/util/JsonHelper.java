@@ -115,7 +115,10 @@ public abstract class JsonHelper {
             for (int i = 0; i < jsArr.size(); i++) {
                 str = new StringBuffer();
                 buff = (JSONObject) jsArr.get(i);
-                str.append(buff.get(NAME_OF_TRACK + "; " + NAME_OF_PERFORMER + "; " + NAME_OF_ALBUM + "; " + NAME_OF_GENRE));
+                str.append("(" + buff.get(NAME_OF_TRACK)+ " ; ");
+                str.append(buff.get(NAME_OF_PERFORMER) + " ; ");
+                str.append(buff.get(NAME_OF_ALBUM) + " ; ");
+                str.append(buff.get(NAME_OF_GENRE) + ")");
                 arr.add(str);
             }
             return arr;
