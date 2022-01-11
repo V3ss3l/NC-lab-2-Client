@@ -25,8 +25,7 @@ public class ConsoleView implements View, Serializable, Runnable {
     }
 
     public void run(){
-        System.out.println("Program is running.\n" + "Do you want to continue working or Make " +
-                "an operation with list? |Add, Delete, Set, Search, Watch, Help|");
+        System.out.println("Program is running.\n" + "|Add, Delete, Set, Search, Watch, Help, Exit|");
         Scanner sc = new Scanner(System.in);
         String buff = sc.nextLine(); //ожидание ввода команды
         String[] str = buff.split(" ");
@@ -51,6 +50,10 @@ public class ConsoleView implements View, Serializable, Runnable {
                         + "Delete - удаление сущности из списка : Entity|name of track or genre|name of performer\n" + "Set - изменение сущности по входным данным : Entity|name of track (search) or name of genre(search)|name of performer(search)|name of track|name of performer|name of album|name of genre\n"
                         + "Search - поиск сущности по ключам : Entity|name of track or genre|name of performer" + "Watch - просмотр списка сущностей : Entity\n" + "Help - справка по командам\n");
                 break;
+            case "Exit":
+                System.out.println("Program is shutting down...");
+                controller.exitSocket();
+                break;
             default:
                 System.out.println("Where is an action?");
         }
@@ -63,4 +66,6 @@ public class ConsoleView implements View, Serializable, Runnable {
     public void errorList(JSONObject object) {
         System.out.println("Result:\n " + JsonHelper.parseErrorJson(object));
     }
+
+
 }

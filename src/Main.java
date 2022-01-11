@@ -10,6 +10,6 @@ public class Main {
         Controller controller = new Controller(view);
         view.setController(controller);
         new Thread(controller).start();
-        new Thread(view).start();
+        view.run();
     }
 }

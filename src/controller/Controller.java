@@ -13,6 +13,7 @@ import static util.Values.COMMAND;
 
 public class Controller implements Serializable, Runnable{
     private static View view;
+    private static boolean flag;
     public static final int PORT = 6000;
     public static final String HOST = "LocalHost";
     private static Socket socket;
@@ -26,6 +27,7 @@ public class Controller implements Serializable, Runnable{
         this.view = view;
     }
 
+
     public void operationForEntity(JSONObject js) {
         try {
             out.writeObject(js);
@@ -34,23 +36,23 @@ public class Controller implements Serializable, Runnable{
         }
     }
 
+    public void exitSocket(){
+        this.flag = false;
+    }
+
     public void run(){
         try {
             try {
                 socket = new Socket(HOST, PORT);
                 out = new ObjectOutputStream(socket.getOutputStream());
                 in = new ObjectInputStream(socket.getInputStream());
-                Scanner sc = new Scanner(System.in);
-                boolean flag = true;
+                flag = true;
                 while (flag) {
                     JSONObject obj = (JSONObject) in.readObject();
                     if (obj.containsKey(COMMAND)) {
                         view.errorList(obj);
                     } else view.stringList(obj);
-                    System.out.println("Operation is complete. Do you want to repeat? yes|no");
-                    String answer = sc.nextLine();
-                    if (answer.equals("no")) flag = false;
-                    else view.run();
+                    view.run();
                 }
             } finally {
                 System.out.println("Client was closed...");
