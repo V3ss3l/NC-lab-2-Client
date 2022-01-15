@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language java?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.JavaFXView">
+   <children>
+      <Button fx:id="tracksButton" layoutX="32.0" layoutY="48.0" mnemonicParsing="false" onAction="buttonClicked()" text="Tracks" />
+      <Button fx:id="genresButton" layoutX="123.0" layoutY="48.0" mnemonicParsing="false" onAction="buttonClicked()" text="Genres" />
+      <ChoiceBox fx:id="operations" layoutX="27.0" layoutY="109.0" prefWidth="150.0" />
+      <Label layoutX="27.0" layoutY="91.0" text="Operations" />
+      <ListView layoutX="237.0" layoutY="35.0" prefHeight="339.0" prefWidth="339.0" />
+      <MenuBar fx:id="menuBar" layoutY="2.0" prefHeight="26.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ScrollBar layoutX="561.0" layoutY="35.0" orientation="VERTICAL" prefHeight="323.0" prefWidth="14.0" />
+      <ScrollBar layoutX="237.0" layoutY="359.0" prefHeight="14.0" prefWidth="339.0" />
+      <TextField layoutX="27.0" layoutY="252.0" prefHeight="74.0" prefWidth="150.0" />
+      <Button fx:id="okButton" layoutX="29.0" layoutY="341.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" text="Ok" />
+      <Button fx:id="cancelButton" layoutX="124.0" layoutY="341.0" mnemonicParsing="false" text="Cancel" />
+      <Separator layoutX="194.0" layoutY="35.0" orientation="VERTICAL" prefHeight="359.0" prefWidth="14.0" />
+      <Separator layoutX="14.0" layoutY="81.0" prefHeight="3.0" prefWidth="173.0" />
+   </children>
+</AnchorPane>
