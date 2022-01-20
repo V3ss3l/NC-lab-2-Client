@@ -60,7 +60,6 @@ public class Controller implements Serializable, Runnable{
                     JSONObject obj = (JSONObject) in.readObject();
                     if(obj.containsKey(COMMAND)) view.errorList(obj);
                     else view.stringList(obj);
-                    System.out.println("Result: " + JsonHelper.viewModel(obj).toString());
                 }
             } finally {
                 System.out.println("Client was closed...");

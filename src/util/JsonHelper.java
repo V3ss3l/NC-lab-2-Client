@@ -28,14 +28,14 @@ public abstract class JsonHelper {
         return obj;
     }
 
-    public static JSONObject addGenreArrayJson(String[] str) {
+    public static JSONObject addGenreArrayJson(String str) {
         JSONObject obj = new JSONObject();
         JSONObject temp;
         JSONArray arr = new JSONArray();
         obj.put(COMMAND, ADD);
         obj.put(ENTITY, GENRE);
         temp = new JSONObject();
-        temp.put(NAME_OF_GENRE, str[0]);
+        temp.put(NAME_OF_GENRE, str);
         arr.add(temp);
         obj.put(ARRAY, arr);
         return obj;
@@ -67,11 +67,11 @@ public abstract class JsonHelper {
         return obj;
     }
 
-    public static JSONObject searchGenreJson(String[] str) {
+    public static JSONObject searchGenreJson(String str) {
         JSONObject obj = new JSONObject();
         obj.put(COMMAND, SEARCH);
         obj.put(ENTITY, GENRE);
-        obj.put(NAME_OF_GENRE, str[0]);
+        obj.put(NAME_OF_GENRE, str);
         return obj;
     }
 
@@ -85,11 +85,11 @@ public abstract class JsonHelper {
         return obj;
     }
 
-    public static JSONObject deleteGenreJson(String[] str){
+    public static JSONObject deleteGenreJson(String str){
         JSONObject obj = new JSONObject();
         obj.put(COMMAND, DELETE);
         obj.put(ENTITY, GENRE);
-        obj.put(NAME_OF_GENRE, str[0]);
+        obj.put(NAME_OF_GENRE, str);
         return obj;
     }
 
