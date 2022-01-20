@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="545.0" prefWidth="262.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TrackController">
+   <children>
+      <Button fx:id="okButton" layoutX="37.0" layoutY="503.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="53.0" text="Ok" />
+      <Button fx:id="cancelButton" layoutX="171.0" layoutY="503.0" mnemonicParsing="false" text="Cancel" />
+      <ChoiceBox fx:id="choiceBox" layoutX="37.0" layoutY="48.0" prefHeight="26.0" prefWidth="197.0" />
+      <Label layoutX="37.0" layoutY="31.0" text="Operations" />
+      <Separator layoutX="19.0" layoutY="100.0" prefHeight="4.0" prefWidth="225.0" />
+      <Label fx:id="inputText" layoutX="23.0" layoutY="111.0" prefHeight="26.0" prefWidth="226.0" />
+      <TextField fx:id="trackField" layoutX="22.0" layoutY="171.0" prefHeight="26.0" prefWidth="226.0" />
+      <Label layoutX="24.0" layoutY="153.0" prefHeight="18.0" prefWidth="80.0" text="Name of track" />
+      <TextField fx:id="perfField" layoutX="22.0" layoutY="222.0" prefHeight="26.0" prefWidth="226.0" />
+      <Label layoutX="24.0" layoutY="203.0" prefHeight="18.0" prefWidth="110.0" text="Name of performer" />
+      <TextField fx:id="albumField" layoutX="22.0" layoutY="277.0" prefHeight="26.0" prefWidth="226.0" />
+      <Label layoutX="24.0" layoutY="258.0" prefHeight="18.0" prefWidth="110.0" text="Name of album" />
+      <TextField fx:id="genreField" layoutX="22.0" layoutY="326.0" prefHeight="26.0" prefWidth="226.0" />
+      <Label layoutX="24.0" layoutY="307.0" prefHeight="18.0" prefWidth="110.0" text="Name of genre" />
+      <TextField fx:id="trackSearchField" layoutX="22.0" layoutY="384.0" prefHeight="26.0" prefWidth="226.0" />
+      <Label layoutX="24.0" layoutY="365.0" prefHeight="18.0" prefWidth="138.0" text="Name of track for Search" />
+      <Label layoutX="24.0" layoutY="426.0" prefHeight="18.0" prefWidth="163.0" text="Name of performer for Search" />
+      <TextField fx:id="perfSearchField" layoutX="22.0" layoutY="444.0" prefHeight="26.0" prefWidth="226.0" />
+   </children>
+</AnchorPane>
