@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language java?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXController">
+   <children>
+      <Button fx:id="trackButton" layoutX="31.0" layoutY="22.0" mnemonicParsing="false" text="Tracks" />
+      <Button fx:id="genreButton" layoutX="123.0" layoutY="22.0" mnemonicParsing="false" text="Genres" />
+      <ChoiceBox fx:id="choiceBox" layoutX="24.0" layoutY="94.0" prefWidth="150.0" />
+      <Label layoutX="26.0" layoutY="76.0" text="Operations" />
+      <ListView fx:id="listView" layoutX="237.0" layoutY="35.0" prefHeight="339.0" prefWidth="339.0" />
+      <TextField fx:id="textField" layoutX="24.0" layoutY="167.0" prefHeight="74.0" prefWidth="150.0" />
+      <Button fx:id="okButton" layoutX="29.0" layoutY="267.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" text="Ok" />
+      <Button fx:id="cancelButton" layoutX="124.0" layoutY="267.0" mnemonicParsing="false" text="Cancel" />
+      <Separator layoutX="194.0" layoutY="35.0" orientation="VERTICAL" prefHeight="359.0" prefWidth="14.0" />
+      <Separator layoutX="15.0" layoutY="64.0" prefHeight="3.0" prefWidth="173.0" />
+      <Label fx:id="inputText" layoutX="24.0" layoutY="137.0" prefHeight="18.0" prefWidth="150.0" />
+      <Separator layoutX="12.0" layoutY="320.0" prefHeight="3.0" prefWidth="174.0" />
+   </children>
+</AnchorPane>

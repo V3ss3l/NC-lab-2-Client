@@ -13,6 +13,8 @@ public final class Values {
     public static final String ADD = "add";
     public static final String WATCH = "watch";
     public static final String SET = "set";
+    public static final String DELETE = "Delete";
+    public static final String SEARCH = "Search";
     public static final String ARRAY = "Array";
     public static final String GENRE = "Genre";
     public static final String NAME_FOR_SEARCH = "nameOfTrackSearch";

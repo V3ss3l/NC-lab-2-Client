@@ -1,21 +1,28 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import util.JsonHelper;
-import view.ConsoleView;
+import view.JavaFXView;
 import view.View;
 
+import java.awt.event.ActionEvent;
 import java.io.*;
 import java.net.Socket;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import static util.Values.COMMAND;
 
 public class Controller implements Serializable, Runnable{
-    private static View view;
+    private View view;
     private static boolean flag;
     public static final int PORT = 6000;
     public static final String HOST = "LocalHost";
@@ -26,12 +33,11 @@ public class Controller implements Serializable, Runnable{
     public Controller() {
     }
 
-    public Controller(View view) {
+    public Controller(View view){
         this.view = view;
     }
 
-
-    public void operationForEntity(JSONObject js) {
+    public static void operationForEntity(JSONObject js) {
         try {
             out.writeObject(js);
         } catch (IOException e) {
@@ -52,10 +58,9 @@ public class Controller implements Serializable, Runnable{
                 flag = true;
                 while (flag) {
                     JSONObject obj = (JSONObject) in.readObject();
-                    if (obj.containsKey(COMMAND)) {
-                        view.errorList(obj);
-                    } else view.stringList(obj);
-                    view.run();
+                    if(obj.containsKey(COMMAND)) view.errorList(obj);
+                    else view.stringList(obj);
+                    System.out.println("Result: " + JsonHelper.viewModel(obj).toString());
                 }
             } finally {
                 System.out.println("Client was closed...");
@@ -66,58 +71,6 @@ public class Controller implements Serializable, Runnable{
         } catch (IOException | ClassNotFoundException | ParseException e) {
             System.err.println(e);
         }
-    }
-
-    @FXML
-    private Button trackButton;
-
-    @FXML
-    private Button genresButton;
-
-    @FXML
-    private Button okButton;
-
-    @FXML
-    private Button cancelButton;
-
-    @FXML
-    private ChoiceBox choiceBox;
-
-    @FXML
-    private MenuBar menuBar;
-
-    @FXML
-    private ListView listView;
-
-    @FXML
-    private TextField textField;
-
-    @FXML
-    private void add(){
-        String buff = textField.getText();
-        String[] str = buff.split(" ");
-        JSONObject obj = JsonHelper.addEntityArrayJson(str);
-        operationForEntity(obj);
-    }
-
-    @FXML
-    private void delete(){
-
-    }
-
-    @FXML
-    private void watch(){
-
-    }
-
-    @FXML
-    private void search(){
-
-    }
-
-    @FXML
-    private void set(){
-
     }
 }
 

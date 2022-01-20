@@ -65,6 +65,4 @@ public class ConsoleView implements View, Serializable, Runnable {
     public void errorList(JSONObject object) {
         System.out.println("Result:\n " + JsonHelper.parseErrorJson(object));
     }
-
-
 }
